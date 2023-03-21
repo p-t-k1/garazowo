@@ -10,7 +10,7 @@ import {
 import { useGetIdentity } from "@refinedev/core";
 import React, { useContext } from "react";
 
-import { ColorModeContext } from "../../contexts/color-mode";
+import { ColorModeContext } from "../../../contexts/color-mode/index";
 
 type IUser = {
   id: number;
@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
   const showUserInfo = user && (user.name || user.avatar);
 
   return (
-    <AppBar color="default" position="sticky" elevation={1}>
+    <AppBar color="default" position="sticky" elevation={0} sx={{background: '#FCFCFC'}}>
       <Toolbar>
         <Stack
           direction="row"
@@ -33,13 +33,6 @@ export const Header: React.FC = () => {
           justifyContent="flex-end"
           alignItems="center"
         >
-          <IconButton
-            onClick={() => {
-              setMode();
-            }}
-          >
-            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-          </IconButton>
           {showUserInfo && (
             <Stack direction="row" gap="16px" alignItems="center">
               {user.avatar && <Avatar src={user?.avatar} alt={user?.name} />}

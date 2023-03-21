@@ -8,7 +8,6 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
   ErrorComponent,
-  Layout,
   RefineSnackbarProvider,
   notificationProvider,
 } from "@refinedev/mui";
@@ -29,6 +28,7 @@ import {
   CategoryShow,
 } from "pages/categories";
 import { Login } from "pages/login";
+import { Home } from "pages/home";
 import {
   ProductCreate,
   ProductEdit,
@@ -37,8 +37,10 @@ import {
 } from "pages/products";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { parseJwt } from "utils/parse-jwt";
-import { Header } from "./components/header";
+import { Sider, Header, Layout } from "./components/layout";
 import { ColorModeContextProvider } from "./contexts/color-mode";
+import { MuiInferencer } from "@refinedev/inferencer/mui";
+
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -142,6 +144,10 @@ function App() {
               authProvider={authProvider}
               resources={[
                 {
+                  name: "home",
+                  list: MuiInferencer,
+                },
+                {
                   name: "products",
                   list: "/products",
                   create: "/products/create",
@@ -152,14 +158,8 @@ function App() {
                   },
                 },
                 {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
+                  name: "property",
+                  list: MuiInferencer,
                 },
               ]}
               options={{
@@ -171,7 +171,7 @@ function App() {
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <Layout Header={Header}>
+                      <Layout Header={Header} Sider={Sider}>
                         <Outlet />
                       </Layout>
                     </Authenticated>
@@ -179,8 +179,11 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="products" />}
+                    element={<NavigateToResource resource="home" />}
                   />
+                  <Route path="/home">
+                    <Route index element={<Home />} />
+                  </Route>
                   <Route path="/products">
                     <Route index element={<ProductList />} />
                     <Route path="create" element={<ProductCreate />} />
@@ -206,7 +209,7 @@ function App() {
                 <Route
                   element={
                     <Authenticated>
-                      <Layout Header={Header}>
+                      <Layout Header={Header} Sider={Sider}>
                         <Outlet />
                       </Layout>
                     </Authenticated>
