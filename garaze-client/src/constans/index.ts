@@ -1,27 +1,27 @@
 export const propertyReferralsInfo = [
     {
-        title: 'Social Media',
-        percentage: 64,
+        title: 'Warszawa',
+        percentage: 34,
         color: '#6C5DD3',
     },
     {
-        title: 'Marketplace',
-        percentage: 40,
+        title: 'Kraków',
+        percentage: 23,
         color: '#7FBA7A',
     },
     {
-        title: 'Websites',
-        percentage: 50,
+        title: 'Poznań',
+        percentage: 17,
         color: '#FFCE73',
     },
     {
-        title: 'Digital Ads',
-        percentage: 80,
+        title: 'Tarnów',
+        percentage: 10,
         color: '#FFA2C0',
     },
     {
-        title: 'Others',
-        percentage: 15,
+        title: 'Inne',
+        percentage: 16,
         color: '#F45252',
     },
 ];

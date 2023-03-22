@@ -2,12 +2,12 @@ import { ApexOptions } from 'apexcharts';
 
 export const TotalRevenueSeries = [
     {
-        name: 'Last Month',
-        data: [183, 124, 115, 85, 143, 143, 96],
+        name: 'Bieżący miesiąc',
+        data: [16, 17, 13, 14, 15, 17, 17],
     },
     {
-        name: 'Running Month',
-        data: [95, 84, 72, 44, 108, 108, 47],
+        name: 'Poprzedni rok',
+        data: [14, 15, 13, 14, 12, 15, 13],
     },
 ];
 
@@ -18,7 +18,7 @@ export const TotalRevenueOptions: ApexOptions = {
             show: false,
         },
     },
-    colors: ['#475BE8', '#CFC8FF'],
+    colors: ['#23e5db', '#c4e8ef'],
     plotOptions: {
         bar: {
             borderRadius: 4,
@@ -37,11 +37,11 @@ export const TotalRevenueOptions: ApexOptions = {
         width: 4,
     },
     xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec'],
     },
     yaxis: {
         title: {
-            text: '$ (thousands)',
+            text: 'zł (tysiące)',
         },
     },
     fill: {

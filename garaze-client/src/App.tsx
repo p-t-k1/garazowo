@@ -40,7 +40,7 @@ import { parseJwt } from "utils/parse-jwt";
 import { Sider, Header, Layout } from "./components/layout";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { MuiInferencer } from "@refinedev/inferencer/mui";
-
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -146,6 +146,8 @@ function App() {
                 {
                   name: "home",
                   list: MuiInferencer,
+                  options: { label: "Panel" },
+                  icon: <DashboardOutlinedIcon />,
                 },
                 {
                   name: "products",
