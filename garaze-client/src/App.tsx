@@ -29,6 +29,7 @@ import {
 } from "pages/categories";
 import { Login } from "pages/login";
 import { Home } from "pages/home";
+import  AllProperties  from "pages/all-properties";
 import {
   ProductCreate,
   ProductEdit,
@@ -41,6 +42,7 @@ import { Sider, Header, Layout } from "./components/layout";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { MuiInferencer } from "@refinedev/inferencer/mui";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import GarageOutlinedIcon from '@mui/icons-material/GarageOutlined';
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -150,6 +152,13 @@ function App() {
                   icon: <DashboardOutlinedIcon />,
                 },
                 {
+                  name: "parking-spaces",
+                  list: MuiInferencer,
+                  create: AllProperties,
+                  options: { label: "Miejsca" },
+                  icon: <GarageOutlinedIcon />,
+                },
+                {
                   name: "products",
                   list: "/products",
                   create: "/products/create",
@@ -185,6 +194,12 @@ function App() {
                   />
                   <Route path="/home">
                     <Route index element={<Home />} />
+                  </Route>
+                  <Route path="/parking-spaces">
+                    <Route index element={<AllProperties />} />
+                    <Route path="create" element={<ProductCreate />} />
+                    <Route path="edit/:id" element={<ProductEdit />} />
+                    <Route path="show/:id" element={<ProductShow />} />
                   </Route>
                   <Route path="/products">
                     <Route index element={<ProductList />} />
