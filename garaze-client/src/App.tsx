@@ -29,7 +29,8 @@ import {
 } from "pages/categories";
 import { Login } from "pages/login";
 import { Home } from "pages/home";
-import  AllProperties  from "pages/all-properties";
+import  AllParkingSpaces  from "./pages/all-parking-spaces";
+import CreateParkingSpace from "./pages/create-parking-space";
 import {
   ProductCreate,
   ProductEdit,
@@ -154,7 +155,7 @@ function App() {
                 {
                   name: "parking-spaces",
                   list: MuiInferencer,
-                  create: AllProperties,
+                  create: CreateParkingSpace,
                   options: { label: "Miejsca" },
                   icon: <GarageOutlinedIcon />,
                 },
@@ -196,8 +197,8 @@ function App() {
                     <Route index element={<Home />} />
                   </Route>
                   <Route path="/parking-spaces">
-                    <Route index element={<AllProperties />} />
-                    <Route path="create" element={<ProductCreate />} />
+                    <Route index element={<AllParkingSpaces />} />
+                    <Route path="create" element={<CreateParkingSpace />} />
                     <Route path="edit/:id" element={<ProductEdit />} />
                     <Route path="show/:id" element={<ProductShow />} />
                   </Route>

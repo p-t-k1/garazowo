@@ -5,7 +5,7 @@ import { Add } from "@mui/icons-material";
 import { CustomButton } from "components";
 
 
-const AllProperties = () => {
+const AllParkingSpaces = () => {
     const navigate = useNavigate();
 
     return (
@@ -20,4 +20,4 @@ const AllProperties = () => {
     )
 }
 
-export default AllProperties
+export default AllParkingSpaces
