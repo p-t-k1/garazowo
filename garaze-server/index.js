@@ -3,6 +3,8 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 
 import connectDB from "./mongodb/connect.js";
+import userRoutes from "./routes/user.routes.js";
+import parkingSpaceRoutes from "./routes/parkingSpace.routes.js";
 
 dotenv.config();
 
@@ -13,6 +15,9 @@ app.use(express.json({ limit: '50mb' }));
 app.get('/', (req, res) => {
     res.send({ message: 'Hello world'});
 })
+
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/parking-spaces', parkingSpaceRoutes);
 
 const startServer = async () => {
     try {

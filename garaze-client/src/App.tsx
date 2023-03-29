@@ -61,34 +61,47 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 
 function App() {
   const authProvider: AuthBindings = {
+    // @ts-ignore
     login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
 
       if (profileObj) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...profileObj,
-            avatar: profileObj.picture,
-          })
+        const response = await fetch(
+            "http://localhost:8080/api/v1/users",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: profileObj.name,
+                email: profileObj.email,
+                avatar: profileObj.picture,
+              }),
+            },
         );
 
-        localStorage.setItem("token", `${credential}`);
+        const data = await response.json();
 
-        return {
-          success: true,
-          redirectTo: "/",
-        };
+        if (response.status === 200) {
+          localStorage.setItem(
+              "user",
+              JSON.stringify({
+                ...profileObj,
+                avatar: profileObj.picture,
+                userid: data._id,
+              }),
+          );
+        } else {
+          return Promise.reject();
+        }
       }
+      localStorage.setItem("token", `${credential}`);
 
-      return {
-        success: false,
-      };
+      return Promise.resolve();
     },
     logout: async () => {
       const token = localStorage.getItem("token");
 
-      if (token && typeof window !== "undefined") {
+      if (token) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         axios.defaults.headers.common = {};
@@ -141,7 +154,7 @@ function App() {
           <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
           <RefineSnackbarProvider>
             <Refine
-              dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+              dataProvider={dataProvider("http://localhost:8080/api/v1")}
               notificationProvider={notificationProvider}
               routerProvider={routerBindings}
               authProvider={authProvider}

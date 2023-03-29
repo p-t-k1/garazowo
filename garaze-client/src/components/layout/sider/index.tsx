@@ -56,9 +56,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
     const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
     const isExistAuthentication = useIsExistAuthentication();
-    const { mutate: mutateLogout } = useLogout({
-        v3LegacyAuthProviderCompatible: true,
-    });
+    const { mutate: mutateLogout } = useLogout();
     const Title = useTitle();
 
     const [open, setOpen] = useState<{ [k: string]: any }>({});
@@ -298,7 +296,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             arrow
         >
             <ListItemButton
-                key="logout"
+                key="Wyloguj"
                 onClick={() => mutateLogout()}
                 sx={{
                     justifyContent: "center",
@@ -318,7 +316,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
                     <Logout />
                 </ListItemIcon>
                 <ListItemText
-                    primary={t("buttons.logout", "Logout")}
+                    primary={t("buttons.logout", "Wyloguj")}
                     primaryTypographyProps={{
                         noWrap: true,
                         fontSize: "16px",

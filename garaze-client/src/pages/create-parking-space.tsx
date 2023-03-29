@@ -30,6 +30,7 @@ const CreateParkingSpace = () => {
         await onFinish({
             ...data,
             photo: spaceImage.url,
+            // @ts-ignore
             email: user.email,
         });
     };

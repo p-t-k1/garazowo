@@ -107,8 +107,8 @@ const Form = ({
                                 displayEmpty
                                 required
                                 inputProps={{ "aria-label": "Without label" }}
-                                defaultValue="apartment"
-                                {...register("spaceType", {
+                                defaultValue="garaz_hala"
+                                {...register("parkingSpaceType", {
                                     required: true,
                                 })}
                             >
