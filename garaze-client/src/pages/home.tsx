@@ -5,7 +5,7 @@ import {
     PieChart,
     PropertyReferrals,
     TotalRevenue,
-    PropertyCard,
+    ParkingSpaceCard,
     TopAgent
 } from '../components'
 import {Box, Typography, Stack} from "@mui/material";

@@ -1,7 +1,7 @@
 import { Header } from "./layout/header";
 
 import Profile from "./common/Profile";
-import PropertyCard from "./common/PropertyCard";
+import ParkingSpaceCard from "./common/ParkingSpaceCard";
 import CustomButton from "./common/CustomButton";
 
 // charts
@@ -17,7 +17,7 @@ import TopAgent from "./home/TopAgent";
 
 export {
     Profile,
-    PropertyCard,
+    ParkingSpaceCard,
     CustomButton,
     PieChart,
     PropertyReferrals,

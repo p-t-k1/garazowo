@@ -13,12 +13,41 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-const getAllParkingSpaces = async (req, res) => {};
+const getAllParkingSpaces = async (req, res) => {
+    const { _end, _order, _start, _sort, title_like = "", parkingSpaceType = "" } = req.query;
+
+    const query = {};
+
+    if(parkingSpaceType !== ''){
+        query.parkingSpaceType = parkingSpaceType;
+    }
+
+    if(title_like){
+        query.title = { $regex: title_like, $options: 'i' };
+    }
+
+    try {
+        const count = await ParkingSpace.countDocuments({ query })
+
+        const parkingSpaces = await ParkingSpace
+            .find(query)
+            .limit(_end)
+            .skip(_start)
+            .sort({ [_sort]: _order});
+
+        res.header('x-total-count', count);
+        res.header('Access-Control-Expose-Headers', 'x-total-count');
+
+        res.status(200).json(parkingSpaces);
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+};
 const getParkingSpaceDetail = async (req, res) => {};
 const createParkingSpace = async (req, res) => {
     try {
         const {title, description, parkingSpaceType, location, price, area, photo, email} = req.body;
-        console.log("--------------- " + title + parkingSpaceType)
+
         const session = await mongoose.startSession();
         session.startTransaction();
 
