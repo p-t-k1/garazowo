@@ -2,7 +2,7 @@ import {
   AuthBindings,
   Authenticated,
   GitHubBanner,
-  Refine,
+  Refine, useNavigation,
 } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
@@ -31,6 +31,7 @@ import { Login } from "pages/login";
 import { Home } from "pages/home";
 import  AllParkingSpaces  from "./pages/all-parking-spaces";
 import CreateParkingSpace from "./pages/create-parking-space";
+import ParkingSpaceDetails from "./pages/parkingSpace-details";
 import {
   ProductCreate,
   ProductEdit,
@@ -44,6 +45,7 @@ import { ColorModeContextProvider } from "./contexts/color-mode";
 import { MuiInferencer } from "@refinedev/inferencer/mui";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import GarageOutlinedIcon from '@mui/icons-material/GarageOutlined';
+import EditParkingSpace from "pages/edit-parking-space";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -95,8 +97,11 @@ function App() {
         }
       }
       localStorage.setItem("token", `${credential}`);
-
-      return Promise.resolve();
+      /*return Promise.resolve();*/
+      return {
+        success: true,
+        redirectTo: "/home",
+      };
     },
     logout: async () => {
       const token = localStorage.getItem("token");
@@ -167,30 +172,14 @@ function App() {
                 },
                 {
                   name: "parking-spaces",
-                  list: MuiInferencer,
+                  list: AllParkingSpaces,
                   create: CreateParkingSpace,
+                  show: ParkingSpaceDetails,
+                  edit: EditParkingSpace,
                   options: { label: "Miejsca" },
                   icon: <GarageOutlinedIcon />,
                 },
-                {
-                  name: "products",
-                  list: "/products",
-                  create: "/products/create",
-                  edit: "/products/edit/:id",
-                  show: "/products/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
-                },
-                {
-                  name: "property",
-                  list: MuiInferencer,
-                },
               ]}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-              }}
             >
               <Routes>
                 <Route
@@ -212,20 +201,8 @@ function App() {
                   <Route path="/parking-spaces">
                     <Route index element={<AllParkingSpaces />} />
                     <Route path="create" element={<CreateParkingSpace />} />
-                    <Route path="edit/:id" element={<ProductEdit />} />
-                    <Route path="show/:id" element={<ProductShow />} />
-                  </Route>
-                  <Route path="/products">
-                    <Route index element={<ProductList />} />
-                    <Route path="create" element={<ProductCreate />} />
-                    <Route path="edit/:id" element={<ProductEdit />} />
-                    <Route path="show/:id" element={<ProductShow />} />
-                  </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                    <Route path="edit/:id" element={<EditParkingSpace />} />
+                    <Route path="show/:id" element={<ParkingSpaceDetails />} />
                   </Route>
                 </Route>
                 <Route

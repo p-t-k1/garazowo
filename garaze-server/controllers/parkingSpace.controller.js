@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 import * as dotenv from 'dotenv';
 import { v2 as cloudinary } from 'cloudinary';
+import parkingSpace from "../mongodb/models/parkingSpace.js";
 
 dotenv.config();
 
@@ -43,7 +44,16 @@ const getAllParkingSpaces = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 };
-const getParkingSpaceDetail = async (req, res) => {};
+const getParkingSpaceDetail = async (req, res) => {
+    const { id } = req.params;
+    const propertyExists = await ParkingSpace.findOne({ _id: id }).populate('creator');
+
+    if(propertyExists) {
+        res.status(200).json(propertyExists);
+    } else {
+        res.status(404).json({ message: 'Nie znaleziono' });
+    }
+};
 const createParkingSpace = async (req, res) => {
     try {
         const {title, description, parkingSpaceType, location, price, area, photo, email} = req.body;
@@ -78,8 +88,50 @@ const createParkingSpace = async (req, res) => {
         res.status(500).json({ message: error.message})
     }
 };
-const updateParkingSpace = async (req, res) => {};
-const deleteParkingSpace = async (req, res) => {};
+const updateParkingSpace = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, description, parkingSpaceType, location, price, area, photo } = req.body;
+
+        const photoUrl = await cloudinary.uploader.upload(photo);
+
+        await ParkingSpace.findByIdAndUpdate( {_id: id}, {
+            title,
+            description,
+            parkingSpaceType,
+            location,
+            price,
+            area,
+            photo: photoUrl.url || photo
+        })
+
+        res.status(200).json({ message: "Pomyślnie zaktualizowano" })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+};
+const deleteParkingSpace = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const parkingSpaceToDelete = await ParkingSpace.findById({ _id: id}).populate('creator');
+
+        if(!parkingSpaceToDelete) throw new Error('Nie znaleziono ogłoszenia do usunięcia')
+
+        const session = await mongoose.startSession();
+        session.startTransaction();
+
+        parkingSpaceToDelete.remove({session});
+        parkingSpaceToDelete.creator.allParkingSpaces.pull(parkingSpaceToDelete);
+
+        await parkingSpaceToDelete.creator.save({session});
+        await session.commitTransaction();
+
+        res.status(200).json({ message: 'Ogłoszenie usunięte pomyślnie' });
+    } catch (error) {
+        res.status(500).json({ message: error.message});
+    }
+};
 
 export {
     getAllParkingSpaces,

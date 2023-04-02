@@ -52,7 +52,7 @@ const ParkingSpaceCard = ({
                 }}
             >
                 <Stack direction="column" gap={1}>
-                    <Typography fontSize={16} fontWeight={500} color="#002f34">
+                    <Typography fontSize={16} fontWeight={500} color="#002f34" maxWidth="200px">
                         {title}
                     </Typography>
                     <Stack direction="row" gap={0.5} alignItems="flex-start">
@@ -63,7 +63,7 @@ const ParkingSpaceCard = ({
                                 marginTop: 0.5,
                             }}
                         />
-                        <Typography fontSize={14} color="#808191">
+                        <Typography fontSize={14} color="#808191" maxWidth="200px">
                             {location}
                         </Typography>
                     </Stack>

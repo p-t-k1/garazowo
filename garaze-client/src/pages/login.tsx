@@ -1,12 +1,10 @@
-import { useLogin } from "@refinedev/core";
+import { useLogin, useNavigation } from "@refinedev/core";
 import { useEffect, useRef } from "react";
 import { CredentialResponse } from "../interfaces/google";
 import {Container, Box, Typography} from "@mui/material";
 
 import { logo } from '../assets';
 import {parseJwt} from "../utils/parse-jwt";
-
-import { useNavigation } from "@refinedev/core";
 
 export const Login: React.FC = () => {
     const { mutate: login } = useLogin<CredentialResponse>();

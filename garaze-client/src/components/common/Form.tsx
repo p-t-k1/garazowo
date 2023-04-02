@@ -107,16 +107,16 @@ const Form = ({
                                 displayEmpty
                                 required
                                 inputProps={{ "aria-label": "Without label" }}
-                                defaultValue="garaz_hala"
+                                defaultValue="miejsce postojowe w hali garażowej"
                                 {...register("parkingSpaceType", {
                                     required: true,
                                 })}
                             >
-                                <MenuItem value="garaz_hala">Miejsce postojowe w hali garażowej</MenuItem>
-                                <MenuItem value="garaz_podziemny">Miejsce postojowe w garażu podziemnym</MenuItem>
-                                <MenuItem value="garaz">Miejsce postojowe w garażu</MenuItem>
-                                <MenuItem value="naziemne">Miejsce postojowe naziemne</MenuItem>
-                                <MenuItem value="garaz_indywidualny">Garaż indywidualny na wynajem</MenuItem>
+                                <MenuItem value="miejsce postojowe w hali garażowej">Miejsce postojowe w hali garażowej</MenuItem>
+                                <MenuItem value="miejsce postojowe w garażu podziemnym">Miejsce postojowe w garażu podziemnym</MenuItem>
+                                <MenuItem value="miejsce postojowe w garażu">Miejsce postojowe w garażu</MenuItem>
+                                <MenuItem value="miejsce postojowe naziemne">Miejsce postojowe naziemne</MenuItem>
+                                <MenuItem value="garaż indywidualny na wynajem">Garaż indywidualny na wynajem</MenuItem>
                                 <MenuItem value="inne">Inne</MenuItem>
                             </Select>
                         </FormControl>

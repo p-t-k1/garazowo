@@ -43,7 +43,7 @@ const AllParkingSpaces = () => {
 
     return (
         <Box>
-            <Box mt="20px" sx={{ display: 'flex', flexWrap: 'wrap', gap: 3}}>
+            <Box mt="10px" sx={{ display: 'flex', flexWrap: 'wrap', gap: 3}}>
                 <Stack direction="column" width="100%">
                     <Typography fontSize={25} fontWeight={700} color={"#002f34"}>{!allParkingSpaces.length ? 'Brak dostępnych ogłoszeń' : 'Wszystkie dostępne miejsca'}</Typography>
                     <Box mb={2} mt={3} display="flex" width="84%" justifyContent="space-between" flexWrap="wrap">
