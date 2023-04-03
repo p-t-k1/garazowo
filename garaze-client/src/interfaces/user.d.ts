@@ -1,6 +1,6 @@
 import { BaseKey } from "@refinedev/core";
 
-export interface AgentCardProp {
+export interface UserCardProp {
     id?: BaseKey | undefined;
     name: string;
     email: string;

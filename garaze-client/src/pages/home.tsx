@@ -22,25 +22,25 @@ export const Home: React.FC<IResourceComponentsProps> = () => {
                     title="Miejsca na sprzedaż"
                     value={74}
                     series={[75, 25]}
-                    colors={["#23e5db", "#c4e8ef"]}
+                    colors={["#41b6c2", "#c4e8ef"]}
                 />
                 <PieChart
                     title="Miejsca do wynajęcia"
                     value={452}
                     series={[60, 40]}
-                    colors={["#23e5db", "#c4e8ef"]}
+                    colors={["#41b6c2", "#c4e8ef"]}
                 />
                 <PieChart
                     title="Liczba użytkowników"
                     value={5684}
                     series={[75, 25]}
-                    colors={["#23e5db", "#c4e8ef"]}
+                    colors={["#41b6c2", "#c4e8ef"]}
                 />
                 <PieChart
                     title="Dodane dzisiaj"
                     value={5}
                     series={[75, 25]}
-                    colors={["#23e5db", "#c4e8ef"]}
+                    colors={["#41b6c2", "#c4e8ef"]}
                 />
             </Box>
 

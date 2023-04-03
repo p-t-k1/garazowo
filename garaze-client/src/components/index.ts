@@ -9,8 +9,8 @@ import PieChart from "./charts/PieChart";
 import PropertyReferrals from "./charts/PropertyReferrals";
 import TotalRevenue from "./charts/TotalRevenue";
 
-// agent
-import AgentCard from "./agent/AgentCard";
+// user
+import UserCard from "./user/UserCard";
 
 // home
 import TopAgent from "./home/TopAgent";
@@ -22,7 +22,7 @@ export {
     PieChart,
     PropertyReferrals,
     TotalRevenue,
-    AgentCard,
+    UserCard,
     TopAgent,
     Header,
 };

@@ -100,9 +100,9 @@ export const Login: React.FC = () => {
               }}
           >
             <div>
-              <img src={logo} alt="Logo" height="50px" width="50px" />
+              <img src={logo} alt="Logo" height="50%" />
             </div>
-            <Box mt={4} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+            <Box mt="-10px" sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
               <GoogleButton />
                 <Typography onClick={() => loginTestAccount()} mt={1} color="#4285F4" style={{cursor: 'pointer'}}>Użyj konta testowego</Typography>
             </Box>

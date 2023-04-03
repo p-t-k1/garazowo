@@ -14,16 +14,17 @@ export interface ProfileProps {
     name: string;
     avatar: string;
     email: string;
-    properties: Array | undefined;
+    parkingSpaces: Array | undefined;
 }
 
-export interface PropertyProps {
+export interface ParkingSpaceProps {
     _id: string;
     title: string;
     description: string;
     location: string;
     price: string;
     photo: string;
+    area: string;
     creator: string;
 }
 

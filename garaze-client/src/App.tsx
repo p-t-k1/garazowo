@@ -32,6 +32,9 @@ import { Home } from "pages/home";
 import  AllParkingSpaces  from "./pages/all-parking-spaces";
 import CreateParkingSpace from "./pages/create-parking-space";
 import ParkingSpaceDetails from "./pages/parkingSpace-details";
+import Users from "./pages/user";
+import UerProfile from "./pages/user-profile";
+import MyProfile from "./pages/my-profile";
 import {
   ProductCreate,
   ProductEdit,
@@ -45,7 +48,10 @@ import { ColorModeContextProvider } from "./contexts/color-mode";
 import { MuiInferencer } from "@refinedev/inferencer/mui";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import GarageOutlinedIcon from '@mui/icons-material/GarageOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import EditParkingSpace from "pages/edit-parking-space";
+import UserProfile from "./pages/user-profile";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -179,6 +185,19 @@ function App() {
                   options: { label: "Miejsca" },
                   icon: <GarageOutlinedIcon />,
                 },
+                {
+                  name: "users",
+                  list: Users,
+                  show: UserProfile,
+                  options: { label: "Użytkownicy" },
+                  icon: <PeopleOutlinedIcon />,
+                },
+                {
+                  name: "my-profile",
+                  list: MyProfile,
+                  options: { label: "Mój profil" },
+                  icon: <PersonOutlinedIcon />,
+                },
               ]}
             >
               <Routes>
@@ -203,6 +222,13 @@ function App() {
                     <Route path="create" element={<CreateParkingSpace />} />
                     <Route path="edit/:id" element={<EditParkingSpace />} />
                     <Route path="show/:id" element={<ParkingSpaceDetails />} />
+                  </Route>
+                  <Route path="/users">
+                    <Route index element={<Users />} />
+                    <Route path="show/:id" element={<UserProfile />} />
+                  </Route>
+                  <Route path="/my-profile">
+                    <Route index element={<MyProfile />} />
                   </Route>
                 </Route>
                 <Route
