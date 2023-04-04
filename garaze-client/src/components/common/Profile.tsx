@@ -151,7 +151,7 @@ const Profile = ({ type, name, avatar, email, parkingSpaces }: ProfileProps) => 
                                                 fontSize={14}
                                                 color="#11142D"
                                             >
-                                                {email}
+                                                {`*****${email.substring(5)}`}
                                             </Typography>
                                         </Box>
                                     </Stack>

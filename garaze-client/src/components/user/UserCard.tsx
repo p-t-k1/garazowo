@@ -1,4 +1,5 @@
 import { EmailOutlined, LocationCity, Phone, Place } from "@mui/icons-material";
+import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined';
 import { useGetIdentity } from "@refinedev/core";
 import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -104,7 +105,7 @@ const UserCard = ({
                         name="606-123-888"
                     />
                     <InfoBar
-                        icon={<LocationCity sx={{ color: "#808191" }} />}
+                        icon={<WarehouseOutlinedIcon sx={{ color: "#808191" }} />}
                         name={`Liczba ogłoszeń: ${noOfProperties}`}
                     />
                 </Stack>
