@@ -5,4 +5,12 @@ The application for posting advertisements for parking spaces rental is a platfo
 The app allows users to easily create and post advertisements for their parking spaces, including details such as location, availability, and pricing. Renters can then browse through the listings to find a parking spot that meets their needs and contact the owner to arrange for rental.
 
 #### Specification
-TypeScript, MERN Stack, MongoDB, Material UI, Refine, CRUD operations, Google Auth, Cloudinary, Dashboard with charts
+- TypeScript
+- MERN Stack
+- MongoDB
+- Material UI
+- Refine
+- CRUD operations
+- Google Auth
+- Cloudinary
+- Dashboard with charts
